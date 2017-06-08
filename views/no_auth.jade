@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    div(class='container')
+        h2= '' + message
+        h1= 'Scan UB card to log in'
+        br
+        form(action='', method='post')
+            input(type='text', id='ta_scan', name='ta_scan' autofocus)
+            |  <--- Scan card with focus here
+            br
+            br
+            input(type='submit', values='submit')
+        br
+        br
+
+
