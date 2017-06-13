@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 
+router.get('/', function (req, res) {
+	res.send('<a href="advising">Advising</a>');
+});
+
 router.get('/advising', function (req, res) {
 	res.render('advising', {
 		message: ''
