@@ -22,12 +22,15 @@ function send_receipt(email){
 }
 
 
-router.get('advising', function (req, res) {
+router.get('/advising', function (req, res) {
 
 	console.log("request");
 	var db = req.db;
 	var collection = db.get('advising-current');
 
+	if(!collection){
+		res.render('advising');
+	}
 	collection.findOne({}, {}, function (err, record) {
 		if (err) {
 			console.log(err);
@@ -40,9 +43,7 @@ router.get('advising', function (req, res) {
 				'ubit': record.person.ubit
 			});
 		} else {
-			res.render('advising', {
-				message: ''
-			});
+			res.render('advising');
 		}
 	});
 
