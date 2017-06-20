@@ -125,7 +125,7 @@ router.post('/advising-end', function (req, res) {
 				if (err) {
 					console.log(err);
 				}
-				res.redirect('/advising');
+				res.redirect('advising');
 			});
 			var collection_ended = db.get('advised');
 			collection_ended.insert({
@@ -139,7 +139,7 @@ router.post('/advising-end', function (req, res) {
 
 		} else {
 			console.log('could not end session');
-			res.redirect('/advising');
+			res.redirect('advising');
 
 		}
 	});
