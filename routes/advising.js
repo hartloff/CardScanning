@@ -53,7 +53,7 @@ router.post('/advising-start', function (req, res) {
 	console.log(res.scanned_person);
 	var name = res.scanned_person.name;
 	var ubit = res.scanned_person.ubit;
-	var pn = res.scanned_person.person_number;
+	var person_n = res.scanned_person.person_number;
 
 	var db = req.db;
 	var collection = db.get('advising-current');
