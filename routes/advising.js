@@ -121,12 +121,7 @@ router.post('/advising-end', function (req, res) {
 		if (record) {
 			console.log('session ended: ' + ubit);
 			console.log('record: ' + record);
-			collection.remove({'person.ubit': ubit}, function (err) {
-				if (err) {
-					console.log(err);
-				}
-				res.redirect('advising');
-			});
+
 			var collection_ended = db.get('advised');
 			collection_ended.insert({
 				'person': record.person,
@@ -135,11 +130,17 @@ router.post('/advising-end', function (req, res) {
 				'comments': comments
 			});
 
-			send_receipt(ubit + "@buffalo.edu");
+			collection.remove({'person.ubit': ubit}, function (err) {
+				if (err) {
+					console.log(err);
+				}
+				send_receipt(ubit + "@buffalo.edu");
+				res.render('advising');
+			});
 
 		} else {
 			console.log('could not end session');
-			res.redirect('advising');
+			res.render('advising');
 
 		}
 	});
