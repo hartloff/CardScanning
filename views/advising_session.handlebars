@@ -1,0 +1,40 @@
+<h1>Advising {{name}}</h1>
+{{#if message}}
+    <h2>{{message}}</h2>
+{{/if}}
+
+
+<form action="advising-end" method="post">
+    <div class="form-group">
+        <label for="comments">Comments [optional]:</label><br/>
+        <textarea class="form-control" rows="7" name="comments" id="comments"></textarea>
+    </div>
+    <input type="hidden" name="ubit" value="{{ubit}}">
+    <input type="submit" value="end session">
+</form>
+
+<br/>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Duration</th>
+        <th>Comments</th>
+    </tr>
+    </thead>
+    {{#each sessions}}
+        <tr>
+            <th>{{this.start.date}}</th>
+
+            <th>{{this.start.time}}</th>
+
+            <th>
+                {{this.duration}} minute{{#if this.duration_plural}}s{{/if}}
+            </th>
+
+            <th>{{this.comments}}</th>
+        </tr>
+    {{/each}}
+</table>

@@ -10,7 +10,10 @@ var mongo = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/scanning');
 
-var routes = require('./routes/index');
+var index_routes = require('./routes/index');
+var advising_routes = require('./routes/advising');
+var attendance_routes = require('./routes/attendance');
+var office_hours_routes = require('./routes/office_hours');
 var preprocessor = require('./routes/preprocessor');
 
 var app = express();
@@ -34,8 +37,12 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.use('/', preprocessor);
-app.use('/', routes);
+app.use(preprocessor);
+
+app.use('/', index_routes);
+app.use('/', advising_routes);
+app.use('/', attendance_routes);
+app.use('/', office_hours_routes);
 
 
 // catch 404 and forward to error handler
