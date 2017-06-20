@@ -1,15 +1,17 @@
-<h1>Advising {{name}}</h1>
+<h1>Advising {{person.name}}</h1>
+<h3>{{person.person_number}}</h3>
+<h3>{{person.ubit}}@buffalo.edu</h3>
 {{#if message}}
     <h2>{{message}}</h2>
 {{/if}}
 
 
-<form action="advising-end" method="post">
+<form action="advising" method="post">
     <div class="form-group">
         <label for="comments">Comments [optional]:</label><br/>
         <textarea class="form-control" rows="7" name="comments" id="comments"></textarea>
     </div>
-    <input type="hidden" name="ubit" value="{{ubit}}">
+    <input type="hidden" name="ubit" value="{{person.ubit}}">
     <input type="submit" value="end session">
 </form>
 

@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 app.use(preprocessor);
 
 app.use('/', index_routes);
-app.use('/', advising_routes);
+app.use('/advising', advising_routes);
 app.use('/', attendance_routes);
 app.use('/', office_hours_routes);
 
