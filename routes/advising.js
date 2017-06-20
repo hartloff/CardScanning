@@ -22,7 +22,7 @@ function send_receipt(email){
 }
 
 
-router.get('/advising', function (req, res) {
+router.get('advising', function (req, res) {
 
 	console.log("request");
 	var db = req.db;
