@@ -3,15 +3,9 @@ var scan_helper = require('./scanner');
 var router = express.Router();
 
 router.use(function (req, res, next) {
-//router.use('/scan/:type', function (req, res, next) {
 	if (req.body.scan) {
-		console.log("scan found");
 		var scan = req.body.scan;
-		var person = scan_helper.scan_to_person(scan);
-		console.log(person);
-		//if (scan_helper.verify_student_ubit(person[2])) {
-			res.scanned_person = person;
-			console.log(person);
+		scan_helper.scan_to_person(scan, function (person) {
 			var db = req.db;
 			var collection = db.get('logging');
 			collection.insert({
@@ -20,10 +14,27 @@ router.use(function (req, res, next) {
 				"person": person,
 				"type": req.params.type
 			});
-		//}
+
+			if (person) {
+				res.scanned_person = person;
+				next();
+			} else {
+				var number = scan_helper.extract_number(scan);
+				if (number) {
+					res.render('advising', {
+						'message': 'Student not found'
+
+					})
+				} else {
+					next();
+				}
+			}
+
+		});
+	} else {
+		next();
 	}
 
-	next();
 });
 
 module.exports = router;

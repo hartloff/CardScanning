@@ -14,7 +14,7 @@ var index_routes = require('./routes/index');
 var advising_routes = require('./routes/advising');
 var attendance_routes = require('./routes/attendance');
 var office_hours_routes = require('./routes/office_hours');
-var preprocessor = require('./routes/preprocessor');
+var preprocessor = require('./util/preprocessor');
 
 var app = express();
 

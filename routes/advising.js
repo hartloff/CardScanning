@@ -1,14 +1,16 @@
 var express = require('express');
 var router = express.Router();
+
 var nodemailer = require('nodemailer');
+var collections = require('../util/data');
 
 
 // Check if a session is active
 router.use(function (req, res, next) {
-	var db = req.db;
-	var collection = db.get('advising-current');
+	//var db = req.db;
+	//var collection = db.get('advising-current');
 
-	collection.findOne({}, {}, function (err, record) {
+	collections.advising_current(req.db).findOne({}, {}, function (err, record) {
 		if (err) {
 			console.log(err);
 		}
@@ -54,18 +56,20 @@ router.post('/', function (req, res) {
 		// end session
 		if (!res.active_session) {
 			// no session to end
-			res.render('advising');
+			res.render('advising', {
+				'message':'Invalid scan or person number'
+			});
 		} else {
 			var comments = req.body.comments;
 			var ubit = req.body.ubit;
 
-			collection.findOne({'person.ubit': ubit}, {}, function (err, record) {
+			collections.advising_current(req.db).findOne({'person.ubit': ubit}, {}, function (err, record) {
 				if (err) {
 					console.log(err);
 				}
 				if (record) {
-					var collection_ended = db.get('advised');
-					collection_ended.insert({
+					//var collection_ended = db.get('advised');
+					collections.advised.insert({
 						'person': record.person,
 						'start_time': record.start_time,
 						'end_time': Date.now(),
@@ -93,12 +97,12 @@ router.post('/', function (req, res) {
 
 
 function goto_active_session(active_session, db, res) {
-	var collection_ended = db.get('advised');
+	//var collection_ended = db.get('advised');
 
 	var person = active_session.person;
 
 	// TODO: Make this an AJAX call after page loads
-	collection_ended.find({'person.ubit': person.ubit}, {}, function (err, records) {
+	collections.advised.find({'person.ubit': person.ubit}, {}, function (err, records) {
 		if (err) {
 			console.log(err);
 		}
@@ -128,13 +132,13 @@ function send_receipt(email) {
 		}
 	});
 
-	transporter.sendMail({
-		from: 'advising@cse.buffalo.edu',
-		replyTo: 'dmgrant3@buffalo.edu',
-		to: email,
-		subject: 'Advising Receipt',
-		text: 'Thank you for your visit. Let me know if you have further questions.'
-	});
+	//transporter.sendMail({
+	//	from: 'advising@cse.buffalo.edu',
+	//	replyTo: 'dmgrant3@buffalo.edu',
+	//	to: email,
+	//	subject: 'Advising Receipt',
+	//	text: 'Thank you for your visit. Let me know if you have further questions.'
+	//});
 }
 
 
