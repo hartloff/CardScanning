@@ -1,0 +1,59 @@
+.dropbtn
+{
+  float:left;
+  background-color:aqua;
+  color: black;
+  padding: 12px;
+  font-size: 12px;
+  border:double;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display:block;
+background-color:light grey;
+}
+h1 {
+font-size:200%;
+color:white;
+margin-left:30% ;
+margin-top:0px;
+text-shadow:0 0px 0 #ccc,0 1px 0 #c9c9c9,
+0 2px 0 #bbb,
+0 3px 0 #b9b9b9,
+0 4px 0 #aaa,
+0 5px 0px rgba(0,0,0,.1),
+0 0 4px rgba(0,0,0,.1),
+0 0px 2px rgba(0,0,0,.3),
+0 2px 4px rgba(0,0,0,.2),
+0 4px 9px rgba(0,0,0,.25),
+0 9px 9px rgba(0,0,0,.2),
+0 19px 19px rgba(0,0,0,.15);
+}
