@@ -38,7 +38,7 @@
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display:block;
-background-color:light grey;
+		background-color:light grey;
 }
 h1 {
 font-size:200%;

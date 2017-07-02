@@ -6,7 +6,6 @@
 -loc
 	TODO: add action url
 	TODO: figure out a better selection method
-	TODO: add date field
 
 -->
 
@@ -29,7 +28,7 @@
 <body>
 	<div id="toolbar" style="background-color:Blue;">
 		<hr>
-		<h1>The University at Buffalo - CS Card swip page</h1>
+		<h1>The University at Buffalo - CS Card swipe page</h1>
 		<div class="dropdown">
 			<button class="dropbtn">Courses</button>
 			<div id="myDropdown" class="dropdown-content">
@@ -125,7 +124,7 @@
 		</div>
 	</div>
 
-<!-- main begins here -->
+<!-- form begins here -->
 
 <!-- Note: bootstrap classes are used in case we decide to use it in the future -->
 	<div class="form">
@@ -163,12 +162,21 @@
 				</div>
 				<div class="form-group" id="question-type-other-field"></div> <!-- placeholder for description field (when other is selected) -->
 
-				<!-- TODO: add date field -->
+				<!-- datetime -->
+				<div class="form-group">
+					<lable class="form-control-label" for="datetime">Date & Time:</label>
+					<input class="form-control" id="datetime" name="datetime" type="datetime-local" required>
+					<p class="form-text" id="datetime-msg"></p> <!-- placeholder for error message -->
+				</div>
 
 				<!-- preferred name -->
 				<div class="form-group">
 					<label class="form-control-label" for="preferred-name">Preferred Name: (optional)</label>
 					<input class="form-control" id="preferred-name" name="preferred-name" placeholder="Preferred name" type="text">
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-success">Submit</button>
 				</div>
 
 			</fieldset>
