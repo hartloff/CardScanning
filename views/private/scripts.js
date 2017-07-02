@@ -26,10 +26,8 @@ $(document).ready(function() {
 
 	// question type field validation
 	$('#question-type').focusout(function() {
-		var value = $(this).val();
-
 		$('#question-type-msg').html(
-			(value.length === 0 && 'you must select at least one item') || ''
+			($('#question-type').val().length === 0 && 'you must select at least one item') || ''
 		);
 	});
 
