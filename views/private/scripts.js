@@ -41,6 +41,8 @@ $(document).ready(function() {
 				);
 			});
 		} else {
+			// detach event handler
+			$('#question-description').off('focusout');
 			$('#question-type-other-field').html('');
 		}
 	});
