@@ -5,9 +5,6 @@ backend form validation still required in case user disables javascript
 	TODO: placeholder for description field (when other is selected)
 					-add option 'other' event listener
 
-	TODO: placeholder for error message (datetime)
-					-add datetime field validation
-
 	TODO: add submit listener
 
 **/
@@ -28,6 +25,13 @@ $(document).ready(function() {
 	$('#question-type').focusout(function() {
 		$('#question-type-msg').html(
 			($('#question-type').val().length === 0 && 'you must select at least one item') || ''
+		);
+	});
+
+	// datetime field validation
+	$('#datetime').focusout(function() {
+		$('#datetime-msg').html(
+			($('#datetime').val() === '' && 'you must provide a date and time') || ''
 		);
 	});
 
