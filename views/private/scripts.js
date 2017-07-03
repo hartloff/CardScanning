@@ -2,9 +2,6 @@
 
 backend form validation still required in case user disables javascript
 
-	TODO: placeholder for description field (when other is selected)
-					-add option 'other' event listener
-
 	TODO: add submit listener
 
 **/
@@ -26,6 +23,26 @@ $(document).ready(function() {
 		$('#question-type-msg').html(
 			($('#question-type').val().length === 0 && 'you must select at least one item') || ''
 		);
+	});
+
+	// option 'other' event listener
+	$('#question-type').change(function() {
+		if($('option[value="Other"]').is(':selected')) {
+			$('#question-type-other-field').html(
+				'<label class="form-control-label" for="question-description">Question description:</label>' +
+				'<input class="form-control" id="question-description" name="question-description" placeholder="Brief description" type="text" required>' +
+				'<p class="form-text" id="question-description-msg"></p>'
+			);
+
+			// question description field validation
+			$('#question-description').focusout(function() {
+				$('#question-description-msg').html(
+					($('#question-description').val() === '' && 'you must provide a question description') || ''
+				);
+			});
+		} else {
+			$('#question-type-other-field').html('');
+		}
 	});
 
 	// datetime field validation
