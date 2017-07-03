@@ -2,8 +2,6 @@
 
 backend form validation still required in case user disables javascript
 
-	TODO: add submit listener
-
 **/
 
 $(document).ready(function() {
