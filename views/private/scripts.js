@@ -2,6 +2,8 @@
 
 backend form validation still required in case user disables javascript
 
+TODO: re-design form validation method
+
 **/
 
 $(document).ready(function() {
