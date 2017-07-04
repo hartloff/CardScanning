@@ -2,58 +2,54 @@
 
 backend form validation still required in case user disables javascript
 
-TODO: re-design form validation method
+TODO: question type validation
 
 **/
 
 $(document).ready(function() {
 
+	// field ready state
+	var personNumReady = false; // person # ready state
+	var datetimeReady = false; // datetime ready state
+
+	// event 'input:change' emitter for all input fields
+	$('input').keyup(function(event) {
+		$(event.target).trigger('input:change');
+	});
+
 	// person # field validation
-	$('#personNum').focusout(function() {
+	$('#personNum').on('input:change focusout form:error', function() {
 		var value = $(this).val();
 
+		var isEmpty = value === '';
+		var isInvalid = value.length !== 8 || isNaN(value);
+		personNumReady = !(isEmpty || isInvalid);
+
 		$('#personNum-msg').html(
-			(value === '' && 'you must provide your person #') ||
-			((value.length !== 8 || isNaN(value)) && 'person # must be an 8-digit number') || ''
+			(isEmpty && 'you must provide your person #') ||
+			(isInvalid && 'person # must be an 8-digit number') || ''
 		);
 	});
 
-	// question type field validation
-	$('#qType').focusout(function() {
-		$('#qType-msg').html(
-			($('#qType').val().length === 0 && 'you must select at least one item') || ''
-		);
-	});
-
-	// option 'other' event listener
-	$('#qType').change(function() {
-		if($('option[value="Other"]').is(':selected')) {
-			$('#qDescField').html(
-				'<label class="form-control-label" for="qDesc">Question description:</label>' +
-				'<input class="form-control" id="qDesc" name="question-description" placeholder="Brief description" type="text" required>' +
-				'<p class="form-text" id="qDesc-msg"></p>'
-			);
-
-			// question description field validation
-			$('#qDesc').focusout(function() {
-				$('#qDesc-msg').html(
-					($('#qDesc').val() === '' && 'you must provide a question description') || ''
-				);
-			});
-		} else {
-			
-			// detach event handler
-			$('#qDesc').off('focusout');
-
-			$('#qDescField').html('');
-		}
-	});
+	// TODO: question type
 
 	// datetime field validation
-	$('#datetime').focusout(function() {
+	$('#datetime').on('input:change focusout form:error' ,function() {
+		datetimeReady = !($(this).val() === '');
+
 		$('#datetime-msg').html(
-			($('#datetime').val() === '' && 'you must provide a date and time') || ''
+			(!datetimeReady && 'you must provide a date and time') || ''
 		);
+	});
+
+	// submit handler
+	$('form').submit(function() {
+		if(!(personNumReady && datetimeReady)) {
+			$('input').trigger('form:error');
+			return false;
+		}
+
+		return true;
 	});
 
 });
