@@ -60,3 +60,21 @@ h1 {
     0 9px 9px rgba(0,0,0,.2),
     0 19px 19px rgba(0,0,0,.15);
 }
+
+.select
+{
+	display: inline-block;
+	border: 1px solid #321;
+}
+
+.optgroup
+{
+	margin: 5px;
+	display: inline-block;
+	border: 1px solid #123;
+}
+
+.option
+{
+	display: inline-block;
+}
