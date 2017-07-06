@@ -5,7 +5,6 @@
 	TODO: replace parts with handlebars helpers
 -loc
 	TODO: add action url
-	TODO: re-design selection method
 
 -->
 
@@ -141,7 +140,21 @@
 				</div>
 
 				<!-- question types -->
-				<!-- TODO -->
+				<div class="form-group">
+					<label class="form-control-label" for="qType">Question (select all that apply):</label>
+					<select class="form-control" id="qType" multiple required>
+						<optgroup label="ADT">
+							<option value="Stack">Stack</option>
+							<option value="Queque">Queque</option>
+						</optgroup>
+						<optgroup label="Class">
+							<option value="Constructor">Constructor</option>
+							<option value="Inheritance">Inheritance</option>
+						</optgroup>
+						<option value="Other">Other</option>
+					</select>
+					<small class="form-text">hold <code>ctrl</code> to select multiple items or deselect an item</small>
+				</div>
 
 				<!-- datetime -->
 				<div class="form-group">
