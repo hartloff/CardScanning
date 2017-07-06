@@ -5,6 +5,7 @@
 	TODO: replace parts with handlebars helpers
 -loc
 	TODO: add action url
+	TODO: question type error message & script
 
 -->
 
@@ -32,7 +33,49 @@
 		<h1>The University at Buffalo - CS Card swipe page</h1>
 		<div class="dropdown">
 			<button class="dropbtn">Courses</button>
-			<div id="myDropdown" class="dropdown-content">
+			<div id="myDropdown" class="dropdown-content">// field ready state
+	var personNumReady = false; // person # ready state
+	var datetimeReady = false; // datetime ready state
+
+	// event 'input:change' emitter for all input fields
+	$('input').keyup(function(event) {
+		$(event.target).trigger('input:change');
+	});
+
+	// person # field validation
+	$('#personNum').on('input:change focusout form:error', function() {
+		var value = $(this).val();
+
+		var isEmpty = value === '';
+		var isInvalid = value.length !== 8 || isNaN(value);
+		personNumReady = !(isEmpty || isInvalid);
+
+		$('#personNum-msg').html(
+			(isEmpty && 'you must provide your person #') ||
+			(isInvalid && 'person # must be an 8-digit number') || ''
+		);
+	});
+
+	// TODO: question type
+
+	// datetime field validation
+	$('#datetime').on('input:change focusout form:error' ,function() {
+		datetimeReady = !($(this).val() === '');
+
+		$('#datetime-msg').html(
+			(!datetimeReady && 'you must provide a date and time') || ''
+		);
+	});
+
+	// submit handler
+	$('form').submit(function() {
+		if(!(personNumReady && datetimeReady)) {
+			$('input').trigger('form:error');
+			return false;
+		}
+
+		return true;
+	});
 				<div style="background-color:aqua; border:double;">
 					<p>Courses</p>
 				</div>
