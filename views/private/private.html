@@ -5,7 +5,7 @@
 	TODO: replace parts with handlebars helpers
 -loc
 	TODO: add action url
-	TODO: question type error message & script
+	TODO: question type script
 
 -->
 
@@ -155,6 +155,15 @@
 						<option value="Other">Other</option>
 					</select>
 					<small class="form-text">hold <code>ctrl</code> to select multiple items or deselect an item</small>
+					<p class="form-text" id="qType-msg"></p> <!-- placeholder for error message -->
+				</div>
+
+				<!-- question description -->
+				<div class="form-group">
+					<label class="form-control-label" for="qDescription">Description:</label>
+					<input class="form-control" id="qDescription" name="qDescription" placeholder="Brief description" type="text" required>
+					<small class="form-text">in one sentence, briefly describe your question</small>
+					<p class="form-text" id="qDescription-msg"></p>
 				</div>
 
 				<!-- datetime -->
