@@ -11,15 +11,16 @@
     
   </head>
   <body>
-         <div id="toolbar" style="background-color: #000080;">
-	   <hr>
-             <h1 style="align:center">Contact Us Form</h1>
-	  </div>
+         <div id="toolbar" style="background-color:	#000080;">
+			<hr>
+             <h1 style="text-align: center">Contact Us Form</h1>
+			 </hr><hr>
+			 </div>
 		<br>
 		<br>
 		<p> PLEASE ENTER THE REQUIRED INFORMATION :</p>
 		  <fieldset id="form" style="border-color:aqua" >
-  		  <form novalidate name="myForm" enctype="text/plain" method="post" onsubmit="return validation(this);" action="mailto:"<!--enter the TA or professor email-->> 	
+  		  <form novalidate name="myForm" enctype="text/plain" method="post" onsubmit="return validation(this);" action="mailto:q"> <!--Email id which will receive the feedback-->	
 		  <p>Required fields are marked as * :  </p>	
 		  <br>
 		  <label>Name :
@@ -29,30 +30,30 @@
 				<br>
 				
 				<label>Person # * :  
-					<input type="text" name="PersonNo" required> 
+				           <input type="text" name="PersonNo" required> 
 				</label>
 				<br>
 				<br>
 				<label>UB email id * :
-				        <input type="text" name="email" required> 
+					   <input type="text" name="email" required> 
 				</label>
 				<br>
 				<br>
 				<label>Course *    :</label>
                                 <select name="Course">     
-			            <option value="--">--</option>  
-                                    <option value="CSE 115">CSE 115</option>
-                                    <option value="CSE 116">CSE 116</option>
-                                    <option value="CSE 250">CSE 250</option>
+				  <option value="--">--</option>  
+                                  <option value="CSE 115">CSE 115</option>
+                                  <option value="CSE 116">CSE 116</option>
+                                  <option value="CSE 250">CSE 250</option>
                                 </select>
 			<br>
 			<br>
            <p class="form">
 			<label for="complaint"> Complaint or Feedback * : </label>
-			    <textarea id="complaint" rows="10" cols="30"></textarea>
+			            <textarea id="complaint" rows="10" cols="30"></textarea>
 			</p>
 			
-	   <input type="submit" name="submit" value="Submit Form">
+			<input type="submit" name="submit" value="Submit Form">
    </form> 
   </fieldset>	 
   
@@ -76,27 +77,27 @@
 			 return false;
 		 }
 		 else if(!emailVal){
-			 theForm.email.style.background = "Red";
-	                 alert("Enter the correct email");
-			 document.getElementById('email').focus() ;
-                         return false;
+			  theForm.email.style.background = "Red";
+	                  alert("Enter the correct email");
+			  document.getElementById('email').focus() ;
+                          return false;
 			  }
 		 else if (course == "--"){
-                         alert("Course must be filled out");
-                         document.getElementById('Course').focus() ;
-                         return false;
+                          alert("Course must be filled out");
+                          document.getElementById('Course').focus() ;
+                          return false;
 			 }
-	     else if (/\'/.test(text)) {
+	         else if (/\'/.test(text)) {
 			  alert('do not add single quotes to your inputs!');
 			  document.getElementById('complaint').focus;
 			  return false;
 			 }
-	   else{
-	       alert("Everything Validates, you can now submit the form");
+	         else{
+	                  alert("Everything Validates, you can now submit the form");
 	   }
   		 
     }				  
        
   </script>
- </body>
+  </body>
 </html>
