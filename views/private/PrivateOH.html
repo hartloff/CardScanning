@@ -11,60 +11,65 @@
     
   </head>
   <body>
-         <div id="toolbar" style="background-color:	#000080;">
-			<hr>
+         <div id="toolbar" style="background-color: #000080;">
+           <hr>
              <h1 style="text-align: center">Group Office Hours Form</h1>
-			 </hr><hr>
-			 </div>
+	   </hr><hr>
+	 </div>
 		<br>
 		<br>
+	
 		<p> PLEASE ENTER THE REQUIRED INFORMATION :</p>
 		  <fieldset id="form" style="border-color:aqua" >
   		  <form novalidate name="myForm" enctype="text/plain" method="post" onsubmit="return validation(this);" action="mailto:q"> <!--Email id which will receive the feedback-->	
 		  <p>Required fields are marked as * :  </p>	
 		  <br>
-		  <label>Name :
-			    <input type="text" name="Name *"> 
-				</label>
+			  
+		<label>Name :
+	             <input type="text" name="Name *"> 
+		</label>
 				<br>
 				<br>
 				
-				<label>Person # * :  
-							    <input type="text" name="PersonNo" required> 
-				</label>
+		<label>Person # * :  
+		     <input type="text" name="PersonNo" required> 
+		</label>
 				<br>
 				<br>
-				<label>UB email id * :
-						   	    <input type="text" name="email" required> 
-				</label>
+			  
+		<label>UB email id * :
+		     <input type="text" name="email" required> 
+		</label>
 				<br>
 				<br>
-				<label>Topic *    :</label>
-                                <select name="Topic">                         <!-- List out all the topic in the course -->     
-								    <option value="--">--</option>  
+			  
+		<label>Topic *    :</label>
+                     <select name="Topic">                         <!-- List out all the topics in the course -->     
+				  <option value="--">--</option>  
                                   <option value="Data Structures">Data Structures</option>
                                   <option value="Classes">Classes</option>
                                   <option value="Variables">Variables</option>
-                                </select>
+                     </select>
 			<br>
 			<br>
-           <p class="form">
-			<label for="explain"> Explain your doubt if necessary * : </label>
-			                    <textarea id="explain" rows="10" cols="30"></textarea>
-			</p>
+			  
+                <p class="form">
+		     <label for="explain"> Explain your doubt if necessary * : </label>
+			        <textarea id="explain" rows="10" cols="30"></textarea>
+		</p>
 			
-			<label>Choose time slot *    :</label>
-                                <select name="TimeSlot">                         <!-- List out all the topic in the course -->     
-								    <option value="--">--</option>  
+		<label>Choose time slot *    :</label>
+                     <select name="TimeSlot">                         <!-- List out the TA office hours -->     
+				  <option value="--">--</option>  
                                   <option value="ts1">10:00 am - 11:00 am</option>
                                   <option value="ts2">11:00 am - 12:00 pm</option>
                                   <option value="ts3">12:00 pm - 1:00 pm</option>
-                                </select>
+                     </select>
 			<br>
 			<br>
 			
-			<input type="submit" name="submit" value="Submit Form">
-   </form> 
+	        <input type="submit" name="submit" value="Submit Form">
+      </form> 
   </fieldset>	 
   
   
@@ -75,6 +80,7 @@
 		        var name = ContactUsForm.Name.value;
 				 var pNo = ContactUsForm.PersonNo.value;
 				 var pNoVal = /^[0-9]{8}$/.test(pNo);
+		     
 				 var email = ContactUsForm.email.value;
 				 var atPos = email.indexOf("@");
 				 var buffalo = email.substring(atPos+1);
@@ -86,37 +92,37 @@
 		 
 		 
 		 if(!pNoVal){
-		     alert("Please input only 8 digits");
+		         alert("Please input only 8 digits");
 			 document.getElementById('PersonNo').focus();
 			 return false;
 		 }
 		 else if(!emailVal || buffalo != "buffalo.edu"){
-			  theForm.email.style.background = "Red";
-	          alert("Enter the correct email");
-			  document.getElementById('email').focus() ;
-              return false;
-			  }
+			 theForm.email.style.background = "Red";
+	                 alert("Enter the correct email");
+			 document.getElementById('email').focus() ;
+                         return false;
+		 }
 		 else if (topic == "--"){
-             alert("Topic must be filled out");
-             document.getElementById('Topic').focus() ;
-             return false;
-			 }
-	     else if (/\'/.test(text)) {
+                         alert("Topic must be filled out");
+                         document.getElementById('Topic').focus() ;
+                         return false;
+		 }
+	         else if (/\'/.test(text)) {
 			  alert('do not add single quotes to your inputs!');
 			  document.getElementById('explain').focus;
 			  return false;
-			 }
+		 }
 		 else if(timeSlot == "--"){
-		      alert("Topic must be filled out");
+		          alert("Topic must be filled out");
 			  document.getElementById('TimeSlot').focus();
 			  return false;
 		 }
-	    else{
-	       alert("Everything Validates, you can now submit the form");
+	         else{
+	                  alert("Everything Validates, you can now submit the form");
 	   }
   		 
     }				  
        
   </script>
-  </body>
+ </body>
 </html>
