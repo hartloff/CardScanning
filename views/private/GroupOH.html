@@ -79,8 +79,12 @@
 		        var name = ContactUsForm.Name.value;
 				 var pNo = ContactUsForm.PersonNo.value;
 				 var pNoVal = /^[0-9]{8}$/.test(pNo);
+		     
 				 var email = ContactUsForm.email.value;
+		                 var atPos = email.indexOf("@");
+				 var buffalo = email.substring(atPos+1);
 				 var emailVal = /\S+@\S+\.\S{2,}/.test(email);
+		     
 				 var topic = ContactUsForm.Topic.value;
 				 var text = document.getElementById('explain').value;
 				 var timeSlot = ContactUsForm.TimeSlot.value;
@@ -91,7 +95,7 @@
 			 document.getElementById('PersonNo').focus();
 			 return false;
 		 }
-		 else if(!emailVal){
+		 else if(!emailVal || buffalo != "buffalo.edu"){
 			 theForm.email.style.background = "Red";
 	                 alert("Enter the correct email");
 			 document.getElementById('email').focus() ;
