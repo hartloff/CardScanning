@@ -11,11 +11,11 @@
     
   </head>
   <body>
-         <div id="toolbar" style="background-color:	#000080;">
-			<hr>
+         <div id="toolbar" style="background-color: #000080;">
+	   <hr>
              <h1 style="text-align: center">Contact Us Form</h1>
-			 </hr><hr>
-			 </div>
+	   </hr><hr>
+	 </div>
 		<br>
 		<br>
 		<p> PLEASE ENTER THE REQUIRED INFORMATION :</p>
@@ -23,37 +23,41 @@
   		  <form novalidate name="myForm" enctype="text/plain" method="post" onsubmit="return validation(this);" action="mailto:q"> <!--Email id which will receive the feedback-->	
 		  <p>Required fields are marked as * :  </p>	
 		  <br>
+			  
 		  <label>Name :
 			    <input type="text" name="Name"> 
-				</label>
+		  </label>
 				<br>
 				<br>
 				
-				<label>Person # * :  
-				           <input type="text" name="PersonNo" required> 
-				</label>
+		  <label>Person # * :  
+		            <input type="text" name="PersonNo" required> 
+		  </label>
 				<br>
 				<br>
-				<label>UB email id * :
-					   <input type="text" name="email" required> 
-				</label>
+			  
+		  <label>UB email id * :
+			    <input type="text" name="email" required> 
+		  </label>
 				<br>
 				<br>
-				<label>Course *    :</label>
-                                <select name="Course">     
+			  
+		  <label>Course *    :</label>
+                            <select name="Course">     
 				  <option value="--">--</option>  
                                   <option value="CSE 115">CSE 115</option>
                                   <option value="CSE 116">CSE 116</option>
                                   <option value="CSE 250">CSE 250</option>
-                                </select>
+                            </select>
 			<br>
 			<br>
-           <p class="form">
+			  
+                  <p class="form">
 			<label for="complaint"> Complaint or Feedback * : </label>
-			            <textarea id="complaint" rows="10" cols="30"></textarea>
-			</p>
+			       <textarea id="complaint" rows="10" cols="30"></textarea>
+		  </p>
 			
-			<input type="submit" name="submit" value="Submit Form">
+		  <input type="submit" name="submit" value="Submit Form">
    </form> 
   </fieldset>	 
   
@@ -65,8 +69,12 @@
 		        var name = ContactUsForm.Name.value;
 				 var pNo = ContactUsForm.PersonNo.value;
 				 var pNoVal = /^[0-9]{8}$/.test(pNo);
+		     
 				 var email = ContactUsForm.email.value;
+		                 var atPos = email.indexOf("@");
+				 var buffalo = email.substring(atPos+1);
 				 var emailVal = /\S+@\S+\.\S{2,}/.test(email);
+		     
 				 var course = ContactUsForm.Course.value;
 				 var text = document.getElementById('complaint').value;
 		 
@@ -76,22 +84,22 @@
 			 document.getElementById('PersonNo').focus();
 			 return false;
 		 }
-		 else if(!emailVal){
+		 else if(!emailVal || buffalo != "buffalo.edu"){
 			  theForm.email.style.background = "Red";
 	                  alert("Enter the correct email");
 			  document.getElementById('email').focus() ;
                           return false;
-			  }
+		 }
 		 else if (course == "--"){
                           alert("Course must be filled out");
                           document.getElementById('Course').focus() ;
                           return false;
-			 }
+		 }
 	         else if (/\'/.test(text)) {
 			  alert('do not add single quotes to your inputs!');
 			  document.getElementById('complaint').focus;
 			  return false;
-			 }
+		 }
 	         else{
 	                  alert("Everything Validates, you can now submit the form");
 	   }
