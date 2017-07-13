@@ -9,60 +9,72 @@
     <title>UB Card Swipe- CSE 115</title> 
 	 <link rel = "stylesheet" type = "text/css" href = "myCSS.css"> 
   </head>
-  
+	
   <body>
      <div id="toolbar" style="background-color:	#000080;">
-        	 <hr>
-             <h1 align="left">CSE 115</h1>
-             <div class="dropdown">
+        <hr>
+            <h1 style="text-align: left">CSE 115</h1>
+               <div class="dropdown">
         	 	  <button class="dropbtn">CSE 115</button>
              	  		<!-- link to cse 115 page -->  
-        	 </div>
+               </div>
         	 
-        	 <div class="dropdown">
-        	 	  <button class="dropbtn">TA's</button>
-             	  		  <div id="myDropdown2" class="dropdown-content">
-        	      		  	   <div style="background-color:#87CEEB; border:double;">
-        	      			   <p>TA's</p>
-        		  			   </div>
-							   <!-- show TA location on click -->
+               <div class="dropdown">
+        	   <button class="dropbtn">TA's</button>
+             	  	 <div id="myDropdown2" class="dropdown-content">
+        	      		  <div style="background-color:#87CEEB; border:double;">
+        	      		      <p>TA's</p>
+        		  	  </div>
+				<!-- show TA location on click -->
                   		  <a href="#">TA1</a>
                   		  <a href="#">TA2</a>
                   		  <a href="#">TA3</a>
-             			  </div>
-        	 </div>
+             		 </div>
+               </div>
         	 
-        	 <div class="dropdown">
-        	 	  <button class="dropbtn">Professors</button>
-             	  		  <!-- link to form page -->
-        	 </div>
-			 <div class="dropdown">
-        	 	  <button class="dropbtn">Syllabus</button>
-             	  		  <!-- link to course syllabus page -->
-        	 </div>
-			 <div class="dropdown">
-        	 	  <button class="dropbtn">Private OH</button>
-             	  		  <!-- link to the private oh form -->
-        		  			  
-        	 </div>
-			 <div class="dropdown">
-        	 	  <button class="dropbtn">Group OH</button>
-             	  		  <!-- link to group oh form -->
-        	 </div>
+               <div class="dropdown">
+        	   <button type="button" class="dropbtn">Professors</button>
+             	  	  <!-- link to form page -->
+               </div>
+	     
+	       <div class="dropdown">
+        	   <button class="dropbtn">Syllabus</button>
+             	  	  <!-- link to course syllabus page -->
+               </div>
+	     
+	       <div class="dropdown">
+        	   <button class="dropbtn">Private OH</button>
+			<div id="dropdown3" class="dropdown-content">
+				<div style="background-color:#87CEEB; border:double;">
+				    <p> Private OH </p>
+			        </div>
+				 <!-- Link to the Private OH form-->
+			         <a href="PrivateOH.html"> Private OH Form</a>
+			</div>
+               </div> 
 			 
-        	 
-        	 <div class="dropdown" style="float:right;">
-        	       <button class="dropbtn" style="float:right;">About Us</button>
-				   		   <div id="myDropdown3" class="dropdown-content">
-						   		<div style="background-color:#87CEEB; border:double;">
-        	      			   		 <p>About Us</p>
-        		  			    </div>
-        	       		   		<a href="Homepage.html" target="_blank" style="color:black"> Home Page </a>
-								<a href="contactUs.html" target="_blank" style="color:black"> Contact Us </a>
-								
-        	 			   </div>
-        	 </div>
-	 </div>
+	       <div class="dropdown">
+        	   <button class="dropbtn">Group OH</button>
+		        <div id="dropdown4" class="dropdown-content">
+				<div style="background-color:#87CEEB; border:double;">
+				    <p> Group OH </p>
+	                        </div>
+			         <!-- Link to the Group OH form -->
+			         <a href="GroupOH.html"> Group OH Form</a>
+		        </div>
+               </div>
+			 
+               <div class="dropdown" style="float:right;">
+        	   <button class="dropbtn" style="float:right;">About Us</button>
+		        <div id="myDropdown5" class="dropdown-content">
+			        <div style="background-color:#87CEEB; border:double;">
+        	      		    <p>About Us</p>
+        		  	</div>
+        	       		  <a href="Homepage.html" target="_blank" style="color:black"> Home Page </a>
+				  <a href="contactUs.html" target="_blank" style="color:black"> Contact Us </a>		
+        	        </div>
+               </div>
+       </div>
 	 
   </body>
 </html>
