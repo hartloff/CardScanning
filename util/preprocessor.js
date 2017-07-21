@@ -3,6 +3,7 @@ var scan_helper = require('./scanner');
 var router = express.Router();
 
 router.use(function (req, res, next) {
+	console.log(req.user);
 	if (req.body.scan) {
 		var scan = req.body.scan;
 		scan_helper.scan_to_person(scan, function (person) {
@@ -23,7 +24,7 @@ router.use(function (req, res, next) {
 				if (number) {
 					res.render('advising', {
 						'message': 'Student not found'
-
+						// TODO Option to add student
 					})
 				} else {
 					next();

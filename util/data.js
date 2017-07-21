@@ -25,7 +25,7 @@ var add_student = module.exports.add_student = function(student){
 
 
 var add_roster = module.exports.add_roster = function(roster){
-	// TODO
+	// TODO upload roster
 };
 
 //add_student({"name":"Jesse Hartloff", "person_number":"00000000", "ubit":"hartloff"});

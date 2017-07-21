@@ -5,11 +5,19 @@ var nodemailer = require('nodemailer');
 var collections = require('../util/data');
 
 
+
 // Check if a session is active
 router.use(function (req, res, next) {
-	//var db = req.db;
-	//var collection = db.get('advising-current');
+	console.log(req.user);
+	if(req.user){
+		next();
+	}else{
+		res.redirect('/');
+	}
+});
 
+// Check if a session is active
+router.use(function (req, res, next) {
 	collections.advising_current(req.db).findOne({}, {}, function (err, record) {
 		if (err) {
 			console.log(err);
@@ -23,6 +31,7 @@ router.use(function (req, res, next) {
 
 
 router.get('/', function (req, res) {
+	//passport.authenticate('local');
 	if (res.active_session) {
 		goto_active_session(res.active_session, req.db, res);
 	} else {
@@ -68,7 +77,6 @@ router.post('/', function (req, res) {
 					console.log(err);
 				}
 				if (record) {
-					//var collection_ended = db.get('advised');
 					collections.advised.insert({
 						'person': record.person,
 						'start_time': record.start_time,

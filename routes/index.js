@@ -3,9 +3,14 @@ var router = express.Router();
 
 
 router.get('/', function (req, res) {
-	// TODO login
 	res.render('index');
 });
+
+
+
+// TODO: Menu with logout while logged in and other account niceties (change password, message when login success, etc)
+
+
 
 
 router.get('/office-hours', function (req, res) {
