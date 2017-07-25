@@ -5,122 +5,137 @@
     <meta name="generator" content="CoffeeCup Web Editor (www.coffeecup.com)">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <title> Group Office Hours Form </title>
+    <title> Office Hours Form </title>
 	<link rel = "stylesheet" type = "text/css" href = "myCSS.css">
-
-    
   </head>
+	
   <body>
-         <div id="toolbar" style="background-color: #000080;">
-	   <hr>
-             <h1 style="text-align: center">Group Office Hours Form</h1>
-	   </hr><hr>
-	 </div>
-		<br>
-		<br>
+	  
+       <div id="toolbar" style="background-color: #000080;">
+	 <hr>
+           <h1 style="text-align: center">Office Hours Form</h1>
+         </hr><hr>
+       </div>
+	
+	<br>
+	<br>
+	
 		<p> PLEASE ENTER THE REQUIRED INFORMATION :</p>
-		  <fieldset id="form" style="border-color:aqua" >
-  		  <form novalidate name="myForm" enctype="text/plain" method="post" onsubmit="return validation(this);" action="mailto:q"> <!--Email id which will receive the feedback-->	
-		  <p>Required fields are marked as * :  </p>	
-		  <br>
-			  
-		  <label>Name :
-			 <input type="text" name="Name *"> 
-		  </label>
-				<br>
-				<br>
-				
-		  <label>Person # * :  
-			 <input type="text" name="PersonNo" required> 
-		  </label>
-				<br>
-				<br>
-			  
-		  <label>UB email id * :
-			 <input type="text" name="email" required> 
-		  </label>
-				<br>
-				<br>
-			  
-		  <label>Topic *    :</label>
-                                <select name="Topic">         <!-- List out all the topic in the course -->     
-				  <option value="--">--</option>  
-                                  <option value="Data Structures">Data Structures</option>
-                                  <option value="Classes">Classes</option>
-                                  <option value="Variables">Variables</option>
-                                </select>
-			<br>
-			<br>
-			  
-                  <p class="form">
+		   <fieldset id="form" style="border-color:aqua" >
+  		    <form novalidate name="myForm" enctype="text/plain" method="post" onsubmit="return validation(this);"> 	
+		      <p>Required fields are marked as * :  </p>
+			    
+		 <br>
+		  
+		<div>
+		   <label>Topic *    :</label>
+                         <select name="Topic">                         <!-- List out all the topic in the course -->     
+			     <option value="--">--</option>  
+			     <option value="HW">Homework</option>
+                             <option value="Data Structures">Data Structures</option>
+                             <option value="Classes">Classes</option>
+                             <option value="Variables">Variables</option>
+                         </select>
+		</div>
+			
+	        <div>
+                   <p class="form">
 			<label for="explain"> Explain your doubt if necessary * : </label>
-			         <textarea id="explain" rows="10" cols="30"></textarea>
-		  </p>
+			        <textarea id="explain" rows="10" cols="30"></textarea>
+		   </p>
+	        </div>
+
+                <div class="tooltip">
+	                <span class="tooltiptext">Select 2 hrs before the chosen slot</span>
+			     <p id="time">
+			           <label>Choose time slot *    :</label>
+                                          <select name="TimeSlot">                             
+						 <option value="--">--</option>  
+                                                 <option value="ts1">10:00 am - 11:00 am</option>
+                                                 <option value="ts2">11:00 am - 12:00 pm</option>
+                                                 <option value="ts3">12:00 pm - 1:00 pm</option>
+                                          </select>
+			     </p>
+	        </div>
 			
-		  <label>Choose time slot *    :</label>
-                                <select name="TimeSlot">                 <!-- List out the times when the TAs are available -->     
-				  <option value="--">--</option>  
-                                  <option value="ts1">10:00 am - 11:00 am</option>
-                                  <option value="ts2">11:00 am - 12:00 pm</option>
-                                  <option value="ts3">12:00 pm - 1:00 pm</option>
-                                </select>
-			<br>
-			<br>
 			
-		  <input type="submit" name="submit" value="Submit Form">
-              </form> 
-  </fieldset>	 
-  
-  
-  <script>
-     
-	     function validation(ContactUsForm){
+			
+<!--<style type="text/css">
+   #taChoice {display:none;}
+</style>-->
+
+               <div>
+                  <label for="OfficeHours">Choose OH type: </label>
+                         <input id="defaultOH" type="checkbox" name="OH" value="defaultOH" checked /> In Davis right now
+                         <input id="groupOH" type="checkbox" name="OH" value="groupOH" /> Group OH
+                         <input id="privateOH" type="checkbox" name="OH" value="privateOH" />Private OH
+                                   <select name="ta" id="taChoice">          <!-- If private is chosen, the TA choice dropdown becomes visible -->
+                                        <option value="ta1">TA1</option>
+			                <option value="ta2">TA2</option>
+                                   </select>
+              </div>
+			
+	      <br>
+			
+	      <input type="submit" name="submit" value="Submit Form">
+			
+                    </form> 
+               </fieldset>	
+	
+<script>
+	
+    function validation(OfficeHoursForm){
 		 
-		        var name = ContactUsForm.Name.value;
-				 var pNo = ContactUsForm.PersonNo.value;
-				 var pNoVal = /^[0-9]{8}$/.test(pNo);
-		     
-				 var email = ContactUsForm.email.value;
-		                 var atPos = email.indexOf("@");
-				 var buffalo = email.substring(atPos+1);
-				 var emailVal = /\S+@\S+\.\S{2,}/.test(email);
-		     
-				 var topic = ContactUsForm.Topic.value;
-				 var text = document.getElementById('explain').value;
-				 var timeSlot = ContactUsForm.TimeSlot.value;
+		var topic = OfficeHoursForm.Topic.value;
+		var text = document.getElementById('explain').value;
+		var timeSlot = OfficeHoursForm.TimeSlot.value;
+				 
+		var time = new Date();
+		var currTime = time.getHours();
+		document.getElementById('time').innerHTML = currTime;
+		var listTime = timeSlot.substring(0, 5);
+		listTime = listTime.replace(":", "");
+		currTime = currTime.replace(":", "");
+				 
 		 
-		 
-		 if(!pNoVal){
-		         alert("Please input only 8 digits");
-			 document.getElementById('PersonNo').focus();
-			 return false;
-		 }
-		 else if(!emailVal || buffalo != "buffalo.edu"){
-			 theForm.email.style.background = "Red";
-	                 alert("Enter the correct email");
-			 document.getElementById('email').focus() ;
-                         return false;
-		 }
-		 else if (topic == "--"){
-                         alert("Topic must be filled out");
-                         document.getElementById('Topic').focus() ;
-                         return false;
-		 }
-	         else if (/\'/.test(text)) {
-			 alert('do not add single quotes to your inputs!');
-			 document.getElementById('explain').focus;
-			 return false;
-		 }
-		 else if(timeSlot == "--"){
-		         alert("Topic must be filled out");
-			 document.getElementById('TimeSlot').focus();
-			 return false;
-		 }
-	         else{
-	                 alert("Everything Validates, you can now submit the form");
-	   }
+	        if (topic == "--"){
+                    alert("Topic must be filled out");
+                    document.getElementById('Topic').focus() ;
+                    return false;
+		}
+	        else if (/\'/.test(text)) {
+		    alert('do not add single quotes to your inputs!');
+		    document.getElementById('explain').focus;
+		    return false;
+		}
+		else if(timeSlot == "--"){
+		    alert("Time slot must be filled out");
+		    document.getElementById('TimeSlot').focus();
+		    return false;
+		}
+		else if(!this.OfficeHoursForm.OH.checked){
+		    alert("Checkboxes must be checked");
+		    return false;
+		}
+		else if(((listTime-currTime)>200 || (listTime-currTime)<0)){
+		    alert("Choose time slot 2 hrs before the mentioned time on the slot.");
+		    return false;
+		}
+	        else{
+	            alert("Everything Validates, you can now submit the form");
+	        }
   		 
-    }				  
+    }	
+	
+	window.onload = function() {
+        var d = document.getElementById('privateOH');
+  
+        d.onclick = function() {
+           if (d.value == "privateOH") {
+	      document.getElementById('taChoice').style.display = 'inline';
+	   }
+    }
+}
        
   </script>
  </body>
