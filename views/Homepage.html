@@ -12,35 +12,77 @@
   
   <body>
      <div id="toolbar" style="background-color:	#000080;">
-        	 <hr>
+         <hr>
              <h1 align="center">University at Buffalo - Card Scanning</h1>
-             <div class="dropdown">
+               <div class="dropdown">
         	 	  <button class="dropbtn">Courses</button>
              	  		  <div id="myDropdown" class="dropdown-content">
         	      		  	   <div style="background-color: #87CEEB; border:double;">
-        	      			   		<p>Courses</p>
-        		  			   </div>
-                  			   <a href="#">CSE 115</a>
+        	      			     <p>Courses</p>
+        		  		   </div>
+                  			   <a href="CSE115.html">CSE 115</a>
                   			   <a href="#">CSE 116</a>
                   			   <a href="#">CSE 250</a>
-             		      </div>
-        	 </div>
+             		          </div>
+               </div>
+			 
+	         <button class="dropbtn" onclick="document.getElementById('log').style.display='block'" >Log in</button>
+			 
         	 <div class="dropdown" style="float:right;">
         	       <button class="dropbtn" style="float:right;">About Us</button>
-				   		  <div id="myDropdown3" class="dropdown-content">
-						    <div style="background-color:#87CEEB; border:double;">
-        	      			   		 <p>About Us</p>
-        		  			    </div>
-        	       		   		<a href="Homepage.html" target="_blank" style="color:black"> Home Page </a>
-						<a href="ContactUsForm.html" target="_blank" style="color:black"> Contact Us </a>
-								
-        	 	 </div>
+				  <div id="myDropdown3" class="dropdown-content">
+				         <div style="background-color:#87CEEB; border:double;">
+        	      			    <p>About Us</p>
+        		  	         </div>
+        	       		      <a href="Homepage.html" target="_blank" style="color:black"> Home Page </a>
+				      <a href="ContactUsForm.html" target="_blank" style="color:black"> Contact Us </a>				
+        	 		  </div>
         	 </div>
 			 
-	 </div>
+    </div>
+	 
+	  <!--Log in form for students and TAs-->
+	 <div id="log" class="modal">
+	   <form class="log-in animate" action=>
+	     <div class="logContain">
+                  <label style="text-align: left; color: red;"> *All fields required </label>
+		   <span onclick="document.getElementById('log').style.display='none'" class="close" title="Close log">&times;</span>
+	     </div>
+		
+	     <div class="contain">
+		 <label><b>Username</b></label>
+		 <input type="text" placeholder="Enter Username" name="uname" required>
+		   
+	         <label><b>Password</b></label>
+		 <input type="text" placeholder="Enter Password" name="pswd" required>
+		   
+		 <input type="checkbox" name="student"> Student
+		 <input type="checkbox" name="ta"> TA
+		   
+		 <button type="submit">Login</button>
+		 <input type="checkbox" checked="checked"> Remember me
+	     </div>
+	  
+	 </form>     
+        </div>
+	 
+	 
 	 <div id="Jesse" class="body">
 	      <h2> Jesse Hartloff </h2>
 		  <p> </p>
-	 </div>
-  </body>
+	 </div >
+	
+	  
+   <script>
+  // Get the modal
+  var modal = document.getElementById('log');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+     if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+   </script>
+ </body>
 </html>
