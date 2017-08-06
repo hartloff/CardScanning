@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup Web Editor (www.coffeecup.com)">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>TA page</title>
+	<link rel = "stylesheet" type = "text/css" href = "myCSS.css"> 
+  </head>
+  
+  <body>
+		<div id="toolbar" style="background-color: #000080;">
+		 <h1 style="text-align: left">TA Page</h1>
+		  <div class="dropdown">
+        	 	  <button class="dropbtn">Button</button>
+             	  		  
+        	 </div>
+		</div>
+		<br>
+		
+		
+		<div id="target">
+
+<script id="template" type="text/x-handlebars-template">
+
+  <table id="tabl">
+		  <tr>
+		   <th>Name</th>
+		   <th>Doubt</th>
+		   <th>OH Choice</th>
+		  </tr>
+      {{{#each this }}}
+      <tr>
+      
+       <td><input type="checkbox" name="name1" />&nbsp;{{{name}}}</td>
+       <td>{{{topic}}}</td>
+       <td>{{{choice}}}</td>
+      
+      </tr>
+       {{{/each}}}
+	   
+		</table>
+    
+</script>
+
+  </body>
+  
+  <script>
+    window.onload = function() {
+  //Grab the inline template
+  var template = document.getElementById('template').innerHTML;
+
+  //Compile the template
+  var compiled_template = Handlebars.compile(template);
+
+  //Render the data into the template
+  var rendered = compiled_template([
+      { name: 'Homer', topic: 'Data str', choice: 'Group' },
+      { name: 'Peter', topic: 'Arraylists' , choice: 'Private'},
+      { name: 'Eric', topic: 'Classes' , choice: 'group'},
+      { name: 'Kenny', topic: 'Classes', choice: 'Group' },
+      { name: 'Bart', topic: 'Classes' , choice: 'Private'}
+    ]);
+  
+  //Overwrite the contents of #target with the renderer HTML
+  var d =document.getElementById('target').innerHTML = rendered;
+}
+  </script>
+</html>
