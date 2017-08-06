@@ -197,3 +197,26 @@ span.psw {
        float: none;
     }
 }
+
+/* The table for TA Page */
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+table#tabl{
+	  width: 100%;    
+    background-color: white;
+}
+table#tabl th {
+    background-color: #4169E1;    
+    color: white;
+}
+table#tabl tr:nth-child(odd) {
+    background-color: #F0F8FF;
+}
+
+
