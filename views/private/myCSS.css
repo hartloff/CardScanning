@@ -219,6 +219,20 @@ table#tabl tr:nth-child(odd) {
     background-color: #F0F8FF;
 }
 
+/* Help 'em button */
+.tabtn{
+  float:right;
+  background-color: #4682B4;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  border: groove;
+  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+
 /* Log out links */
 a.lnk:link{
 	color: white;
