@@ -248,5 +248,12 @@ a.lnk1:link{
 	bottom: 70px;
 	left: 90px;
 }
+a.lnk2:link{
+	color: white;
+	position: relative;
+	float: right;
+	bottom: 70px;
+	right: 15px;
+}
 
 
