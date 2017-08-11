@@ -41,6 +41,10 @@
     background-color:light grey;
 }
 
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
 h1 {
   font-family: Impact,,sans-serif;
   font-size:200%;
